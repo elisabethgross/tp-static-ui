@@ -81,8 +81,10 @@ $(function initializeMap (){
     activityarr[activity.name] = activity.place.location;
   }
 
+// ARRAY OF MAP MARKERS
  var gmarkers = {};
 
+// CLICKING '+' BUTTON ADDS ITINERARY ITEM TO ITINERARY
   $('button').on('click', function() {
     var marker;
     var theButton = ($(this));
@@ -99,9 +101,9 @@ $(function initializeMap (){
       marker = drawMarker('activity', activityarr[value]);
     }
     gmarkers[value] = marker;
-    console.log(gmarkers);
   });
 
+// CLICKING 'x' BUTTON REMOVES ITINERARY ITEM FROM ITINERARY
   $('#itinerary').on('click', '.remove', '.title', function () {
     var prev = $(this).prev();
     var name = $(prev)[0].innerHTML;
@@ -110,6 +112,22 @@ $(function initializeMap (){
 
     gmarkers[name].setMap(null);
     delete gmarkers[name];
+  });
+
+var daysArr = [];
+var itineraryDayObj = {};
+
+// CLICKING A DAY BUTTON HIGHLIGHTS IT
+$('div.day-buttons').on('click', '.not-add', function() {
+  $(this).toggleClass('clicked');
+  $(this).siblings().removeClass('clicked');
+});
+
+// CLICKING '+' BUTTON ADDS A DAY BUTTON TO ITINERARY
+  $('#day-add').on('click', function() {
+    var before = $('#day-add').prev();
+    var num = parseInt(before[0].innerHTML, 10);
+    before.after('<button class="btn btn-circle day-btn not-add">' + (num + 1) + '</button>');
   });
 
 });

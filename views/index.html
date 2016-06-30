@@ -44,7 +44,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="day-buttons">
-            <button class="btn btn-circle day-btn">1</button>
+            <button class="btn btn-circle day-btn not-add clicked">1</button>
             <button class="btn btn-circle day-btn" id="day-add">+</button>
           </div>
         </div>
@@ -90,9 +90,6 @@
   {% endautoescape %}
 </script>
 <script src="/jquery/jquery.min.js"></script>
-<!-- <script src="/js/main.js"></script> -->
-
-
 
 <script>
   {% for hotel in hotels %}
@@ -104,7 +101,6 @@
   {% for activity in activities %}
   $( "#activity-choices" ).append( "<option>{{ activity.name}}</option>" );
   {% endfor %}
-
 </script>
 
 {% endblock %}
